@@ -28,5 +28,5 @@ services:
         tags: ['controller.service_arguments']
 
     cache:
-        class: \Symfony\Component\Cache\Simple\ApcuCache
+        class: \Symfony\Component\Cache\Simple\FilesystemCache
         public: true
