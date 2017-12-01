@@ -11,6 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
+use \Neomerx\Cors\Analyzer;
+use \Psr\Http\Message\RequestInterface;
+use \Neomerx\Cors\Contracts\AnalysisResultInterface;
+use \Neomerx\Cors\Strategies\Settings as CorsSettings;
+use \Neomerx\Cors\Contracts\Constants\CorsResponseHeaders;
 
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../src/Kernel.php';
@@ -67,8 +72,13 @@ class Kernel extends AppKernel
             $informations[$field] = call_user_func([$response, 'get'.$field]);
         });
 
-        return new JsonResponse($informations);
+        return new JsonResponse(
+            $informations,
+            200,
+            ['Access-Control-Allow-Origin' => '*', 'Access-Control-Request-Method' => 'GET']
+        );
     }
+
 }
 
 $kernel = new Kernel('dev', true);
