@@ -3,13 +3,83 @@
 {% block body %}
 <h1><a href="">urlinfo.incongru.org</a></h1>
 
-<p>Ce service permet d'extraire les métadonnées d'une URL donnée</p>
+<img id="ananas" src="http://www.musiques-incongrues.net/forum/extensions/Vanillacons/smilies/otro%20-%20fruits/pin01.gif" title="ANANAS !" alt="Ananas"/>
 
-<h2>Utilisation</h2>
+<p>
+    Ce service permet d'extraire les métadonnées d'une URL et d'en obtenir une représentation au format JSON.
+</p>
 
-<form action="index.php/info">
-    <input name="url" size="64" />
-    <input type="submit" />
-</form>
+<div id="container" class="narrow">
 
+    <hr />
+
+    <h2>Démo</h2>
+
+    <form action="index.php/info" target="_blank">
+        <input name="url" size="92" value="https://lesyndicatdesscorpions.bandcamp.com/album/nina-harker" />
+        <input type="submit" value="ZOU !" />
+    </form>
+
+    <h2>Documentation</h2>
+
+    <h3>Référence</h3>
+
+    <dl>
+        <dt>Endpoint</dt>
+        <dd><a href="http://urlinfo.incongru.org/index.php/info">http://urlinfo.incongru.org/index.php/info</a></dd>
+        <dt>Query string parameters</dt>
+        <dd><strong>url</strong> : L'URL dont les métadonnées doivent être extraites</dd>
+        <dd>
+            <strong>fields</strong> : La liste des champs à retourner dans la réponse, séparés par une virgule. Par défaut, tous les champs sont retournés : authorName, authorUrl, code, description, feeds, height, imagesUrls, license, providerIconsUrls, providerName, providerUrl, publishedTime, tags, title, type, url, width
+        </dd>
+        <dd><strong>options</strong> : Options transmises à la librairie d'extraction des métadonnées : <a href="https://github.com/oscarotero/Embed#example-with-all-options">https://github.com/oscarotero/Embed#example-with-all-options</a></dd>
+    </dl>
+
+    <h3>Exemple</h3>
+    <h4>Requête</h4>
+<div style="background: #ffffff; overflow:auto;width:auto;"><pre style="margin: 0; line-height: 125%">GET <span style="color: #888888">http://urlinfo.incongru.org/index.php/info?url=https://lesyndicatdesscorpions.bandcamp.com/album/nina-harker</span>
+</pre></div>
+
+
+    <h4>Réponse</h4>
+    <div style="background: #ffffff; overflow:auto;width:auto;"><pre style="margin: 0; line-height: 125%">{
+   <span style="color: #007700">&quot;authorName&quot;</span>:<span style="color: #008800; font-weight: bold">null</span>,
+   <span style="color: #007700">&quot;authorUrl&quot;</span>:<span style="color: #008800; font-weight: bold">null</span>,
+   <span style="color: #007700">&quot;code&quot;</span>:<span style="background-color: #fff0f0">&quot;\u003Ciframe src=\u0022https:\/\/bandcamp.com\/EmbeddedPlayer\/v=2\/album=2714915873\/size=large\/tracklist=false\/artwork=small\/\u0022 frameborder=\u00220\u0022 allowTransparency=\u0022true\u0022 style=\u0022border:none;overflow:hidden;width:400;height:120;\u0022\u003E\u003C\/iframe\u003E&quot;</span>,
+   <span style="color: #007700">&quot;description&quot;</span>:<span style="background-color: #fff0f0">&quot;2 track album&quot;</span>,
+   <span style="color: #007700">&quot;feeds&quot;</span>:[
+
+   ],
+   <span style="color: #007700">&quot;height&quot;</span>:<span style="color: #0000DD; font-weight: bold">120</span>,
+   <span style="color: #007700">&quot;imagesUrls&quot;</span>:[
+      <span style="background-color: #fff0f0">&quot;https:\/\/f4.bcbits.com\/img\/a3131533251_5.jpg&quot;</span>,
+      <span style="background-color: #fff0f0">&quot;https:\/\/f4.bcbits.com\/img\/a3131533251_16.jpg&quot;</span>,
+      <span style="background-color: #fff0f0">&quot;https:\/\/lesyndicatdesscorpions.bandcamp.com\/img\/0.gif&quot;</span>
+   ],
+   <span style="color: #007700">&quot;license&quot;</span>:<span style="color: #008800; font-weight: bold">null</span>,
+   <span style="color: #007700">&quot;providerIconsUrls&quot;</span>:[
+      <span style="background-color: #fff0f0">&quot;https:\/\/lesyndicatdesscorpions.bandcamp.com\/favicon.ico&quot;</span>,
+      <span style="background-color: #fff0f0">&quot;https:\/\/lesyndicatdesscorpions.bandcamp.com\/favicon.png&quot;</span>,
+      <span style="background-color: #fff0f0">&quot;https:\/\/f4.bcbits.com\/img\/a3131533251_3.jpg&quot;</span>
+   ],
+   <span style="color: #007700">&quot;providerName&quot;</span>:<span style="background-color: #fff0f0">&quot;Le Syndicat Des Scorpions&quot;</span>,
+   <span style="color: #007700">&quot;providerUrl&quot;</span>:<span style="background-color: #fff0f0">&quot;https:\/\/bandcamp.com&quot;</span>,
+   <span style="color: #007700">&quot;publishedTime&quot;</span>:<span style="background-color: #fff0f0">&quot;20171127&quot;</span>,
+   <span style="color: #007700">&quot;tags&quot;</span>:[
+
+   ],
+   <span style="color: #007700">&quot;title&quot;</span>:<span style="background-color: #fff0f0">&quot;Nina Harker, by NINA HARKER&quot;</span>,
+   <span style="color: #007700">&quot;type&quot;</span>:<span style="background-color: #fff0f0">&quot;video&quot;</span>,
+   <span style="color: #007700">&quot;url&quot;</span>:<span style="background-color: #fff0f0">&quot;https:\/\/lesyndicatdesscorpions.bandcamp.com\/album\/nina-harker&quot;</span>,
+   <span style="color: #007700">&quot;width&quot;</span>:<span style="color: #0000DD; font-weight: bold">400</span>
+}
+</pre></div>
+
+
+    <hr />
+</div>
+
+
+<p><a href="https://urlinfo.incongru.org">urlinfo.incongru.org</a> est développé par <a href="http://www.constructions-incongrues.net/">Constructions Incongrues</a> et est hébergé par <a href="http://www.pastis-hosting.net">Pastis Hosting</a>.</p>
+<p>Le code source du service est <a href="https://github.com/constructions-incongrues/org.incongru.urlinfo">distribué</a> sous licence <a href="http://www.gnu.org/licenses/agpl.html">GNU Affero GPLv3</a>.</p>
 {% endblock %}
