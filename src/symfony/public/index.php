@@ -64,15 +64,23 @@ class Kernel extends App\Kernel
             'url',
             'width',
         ];
-        $fields = explode(',', $request->query->get('fields', $defaultFields));
+        $fields = explode(',', $request->query->get('fields', implode(',', $defaultFields)));
         $informations = [];
         array_walk($fields, function ($field) use (&$informations, $response) {
             $informations[$field] = call_user_func([$response, 'get'.$field]);
         });
 
+        // Add provider data
+        foreach ($response->getProviders() as $provider) {
+            $providerName = strtolower($provider->getProviderName());
+            if (in_array($providerName, explode(',', $request->query->get('providers', '')), true)) {
+                $informations[strtolower($provider->getProviderName())] = $provider->getBag()->getAll();
+            }
+        }
+
         // Cache response
         $cache = $this->getContainer()->get('cache');
-        $cacheKey = hash('sha256', $request->query->get('url'));
+        $cacheKey = hash('sha256', $request->getUri());
         if (!$cache->has($cacheKey)) {
             $response = new JsonResponse(
                 $informations,
