@@ -64,7 +64,7 @@ class Kernel extends App\Kernel
             'url',
             'width',
         ];
-        $fields = explode(',', $request->query->get('fields', $defaultFields));
+        $fields = explode(',', $request->query->get('fields', implode(',', $defaultFields)));
         $informations = [];
         array_walk($fields, function ($field) use (&$informations, $response) {
             $informations[$field] = call_user_func([$response, 'get'.$field]);
