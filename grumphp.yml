@@ -1,0 +1,36 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+        composer:
+            strict: true
+        git_blacklist:
+            keywords:
+                - "die("
+                - "var_dump("
+                - "exit;"
+        git_commit_message: ~
+        phplint: ~
+        phpcs:
+            standard: PSR2
+            metadata:
+                blocking: false
+        phpcsfixer2:
+            config: .php_cs
+            allow_risky: true
+            diff: true
+            metadata:
+                priority: 10
+        phpmd:
+            metadata:
+                blocking: false
+        phpcpd:
+            directory: src/symfony
+            exclude: ['vendor', 'var']
+        phpstan:
+            autoload_file: src/symfony/vendor/autoload.php
+            metadata:
+                blocking: false
+        securitychecker: ~
+        xmllint: ~
+        yamllint: ~

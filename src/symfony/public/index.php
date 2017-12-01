@@ -1,6 +1,4 @@
 <?php
-
-use App\Kernel as AppKernel;
 use Embed\Embed;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -20,7 +18,7 @@ use \Neomerx\Cors\Contracts\Constants\CorsResponseHeaders;
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../src/Kernel.php';
 
-class Kernel extends AppKernel
+class Kernel extends App\Kernel
 {
     use ControllerTrait;
 
@@ -68,7 +66,7 @@ class Kernel extends AppKernel
         ];
         $fields = explode(',', $request->query->get('fields', $defaultFields));
         $informations = [];
-        array_walk($fields, function($field) use (&$informations, $response) {
+        array_walk($fields, function ($field) use (&$informations, $response) {
             $informations[$field] = call_user_func([$response, 'get'.$field]);
         });
 
@@ -86,10 +84,9 @@ class Kernel extends AppKernel
 
         return $cache->get($cacheKey);
     }
-
 }
 
-$kernel = new Kernel('prod', true);
+$kernel = new \Kernel('prod', true);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
