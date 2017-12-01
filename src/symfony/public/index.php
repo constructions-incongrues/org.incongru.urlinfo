@@ -72,16 +72,24 @@ class Kernel extends AppKernel
             $informations[$field] = call_user_func([$response, 'get'.$field]);
         });
 
-        return new JsonResponse(
-            $informations,
-            200,
-            ['Access-Control-Allow-Origin' => '*', 'Access-Control-Request-Method' => 'GET']
-        );
+        // Cache response
+        $cache = $this->getContainer()->get('cache');
+        $cacheKey = hash('sha256', $request->query->get('url'));
+        if (!$cache->has($cacheKey)) {
+            $response = new JsonResponse(
+                $informations,
+                200,
+                ['Access-Control-Allow-Origin' => '*', 'Access-Control-Request-Method' => 'GET']
+            );
+            $cache->set($cacheKey, $response);
+        }
+
+        return $cache->get($cacheKey);
     }
 
 }
 
-$kernel = new Kernel('dev', true);
+$kernel = new Kernel('prod', true);
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
