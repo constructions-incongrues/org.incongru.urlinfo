@@ -80,7 +80,7 @@ class Kernel extends App\Kernel
 
         // Cache response
         $cache = $this->getContainer()->get('cache');
-        $cacheKey = hash('sha256', $request->query->get('url'));
+        $cacheKey = hash('sha256', $request->getUri());
         if (!$cache->has($cacheKey)) {
             $response = new JsonResponse(
                 $informations,
