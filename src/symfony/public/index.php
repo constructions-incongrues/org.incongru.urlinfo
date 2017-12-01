@@ -70,6 +70,14 @@ class Kernel extends App\Kernel
             $informations[$field] = call_user_func([$response, 'get'.$field]);
         });
 
+        // Add provider data
+        foreach ($response->getProviders() as $provider) {
+            $providerName = strtolower($provider->getProviderName());
+            if (in_array($providerName, explode(',', $request->query->get('providers', '')), true)) {
+                $informations[strtolower($provider->getProviderName())] = $provider->getBag()->getAll();
+            }
+        }
+
         // Cache response
         $cache = $this->getContainer()->get('cache');
         $cacheKey = hash('sha256', $request->query->get('url'));

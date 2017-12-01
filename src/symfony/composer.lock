@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "43698897493abe6ccd9407af2618c62c",
+    "content-hash": "ef5914e32ab4a2fcae786c9c20001a02",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -64,17 +64,11 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.2.2",
+            "version": "dev-facebook-custom-fields",
             "source": {
                 "type": "git",
-                "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "f772982c26034d3d58cd82c4b18e1410dd74625e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/f772982c26034d3d58cd82c4b18e1410dd74625e",
-                "reference": "f772982c26034d3d58cd82c4b18e1410dd74625e",
-                "shasum": ""
+                "url": "git@github.com:constructions-incongrues/Embed",
+                "reference": "40b03d5a6112a09557c21a550c548e2834b84736"
             },
             "require": {
                 "composer/ca-bundle": "^1.0",
@@ -92,7 +86,22 @@
                     "Embed\\": "src"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Embed\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "demo": [
+                    "php -S localhost:8888 demo/index.php"
+                ],
+                "test": [
+                    "phpunit"
+                ],
+                "cs-fix": [
+                    "php-cs-fixer fix ."
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -113,7 +122,11 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-11-13T17:56:44+00:00"
+            "support": {
+                "email": "oom@oscarotero.com",
+                "issues": "https://github.com/oscarotero/Embed/issues"
+            },
+            "time": "2017-12-01T05:50:24+00:00"
         },
         {
             "name": "psr/cache",
@@ -1773,6 +1786,7 @@
     "aliases": [],
     "minimum-stability": "RC",
     "stability-flags": {
+        "embed/embed": 20,
         "symfony/config": 5,
         "symfony/dependency-injection": 5,
         "symfony/framework-bundle": 5,
