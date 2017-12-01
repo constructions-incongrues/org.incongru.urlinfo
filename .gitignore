@@ -1,0 +1,4 @@
+/src/symfony/public/cache
+/vendor
+/src/symfony/public/node_modules/
+/etc/profiles/trivoallan/profile.properties

@@ -1,0 +1,49 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "51cfaac26c150d47d3544dd0f24553bb",
+    "packages": [
+        {
+            "name": "constructions-incongrues/ananas-build-toolkit",
+            "version": "2.0.0-alpha.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/constructions-incongrues/anananas.git",
+                "reference": "c94e0f309528053aff3ee4d48162396d4582d414"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/constructions-incongrues/anananas/zipball/c94e0f309528053aff3ee4d48162396d4582d414",
+                "reference": "c94e0f309528053aff3ee4d48162396d4582d414",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/anananas"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Constructions Incongrues",
+                    "email": "contact@constructions-incongrues.net"
+                }
+            ],
+            "description": "Anananas makes it easy to configure, build and deploy applications to multiple environments",
+            "homepage": "https://github.com/constructions-incongrues/anananas",
+            "time": "2017-10-23T13:14:00+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "constructions-incongrues/ananas-build-toolkit": 15
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

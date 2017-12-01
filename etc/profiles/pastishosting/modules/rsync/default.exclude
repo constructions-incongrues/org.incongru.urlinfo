@@ -1,0 +1,13 @@
+.git
+*-dist
+*.bak
+*.orig
+*.swo
+*.swp
+*~
+/composer.*
+/etc
+/.vagrant
+/vendor
+/src/symfony/var/cache/*
+/src/symfony/var/log/*

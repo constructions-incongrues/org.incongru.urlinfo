@@ -1,0 +1,6 @@
+{
+    "require": {
+        "constructions-incongrues/ananas-build-toolkit": "^2.0@alpha",
+        "symfony/twig-bundle": "^4.0"
+    }
+}
