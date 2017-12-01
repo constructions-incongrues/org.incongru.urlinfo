@@ -109,5 +109,8 @@
     },
     "symfony/templating": {
         "version": "v4.0.0"
+    },
+    "symfony/expression-language": {
+        "version": "v4.0.0"
     }
 }

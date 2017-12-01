@@ -2,3 +2,4 @@
 /vendor
 /src/symfony/public/node_modules/
 /etc/profiles/trivoallan/profile.properties
+/.php_cs.cache
